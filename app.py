@@ -10,8 +10,8 @@ Implements a FastAPI app that:
 Endpoints:
     GET  /               : Welcome message
     GET  /health         : Health + model metadata
-    POST /predict        : Main endpoint for unseen house data
-    POST /predict_required : Only required fields (MODEL_FEATURES)
+    POST /predict        : Main endpoint for unseen house data, Predict house price for unseen
+    POST /predict_required : Predict when caller provides all required model features directly
     POST /reload_model   : Reloads model and demographics from disk
 
 Artifacts expected:
