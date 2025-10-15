@@ -151,7 +151,7 @@ def predict(payload: Dict[str, Any] = Body(...)):
 
         return {
             "prediction": float(pred),
-            "model": "GradientBoostingRegressor",
+            "model": "KNeighborsRegressor",
             "n_features": len(MODEL_FEATURES)
         }
     except Exception as e:
@@ -170,7 +170,7 @@ def predict_required(payload: Dict[str, Any] = Body(...)):
         row = pd.DataFrame([{f: payload[f] for f in MODEL_FEATURES}])
         X = prepare_input(row)
         pred = model.predict(X)[0]
-        return {"prediction": float(pred), "model": "GradientBoostingRegressor"}
+        return {"prediction": float(pred), "model": "KNeighborsRegressor"}
     except Exception as e:
         logger.exception("Prediction (required) failed.")
         raise HTTPException(status_code=500, detail=str(e))
